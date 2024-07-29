@@ -4,7 +4,7 @@ execute unless score $enabled escort.data matches 1 run return 1
 # TEMPORARY
 execute unless entity @e[tag=escort.mob] run return 1
 
-execute at @e[tag=escort.mob] run tp @e[tag=escort.ghost] ~ ~2 ~
+execute at @e[tag=escort.mob] run tp @e[tag=escort.ghost] ~ ~-1 ~
 
 execute store result score $mobHealth escort.data run data get entity @e[tag=escort.mob, limit=1] Health
 execute if score $mobHealth escort.data > $mediumHealthThreshold escort.settings run team leave @e[tag=escort.mob]
@@ -26,4 +26,7 @@ execute if score $damageTimer escort.data matches 0 run function escort:internal
 execute unless score $outOfRangeTimer escort.data matches 0 run scoreboard players set $previouslyOutOfRange escort.data 0
 execute if score $outOfRangeTimer escort.data matches 0 run scoreboard players set $previouslyOutOfRange escort.data 1
 
-# TODO: portal logic and win/lose logic
+# TODO: portal logic
+
+execute if score $enabled escort.data matches 1 as @a if score @s escort.dragonsKilled matches 1.. run function escort:internal/win
+execute if score $enabled escort.data matches 1 unless entity @e[tag=escort.mob] run function escort:internal/lose

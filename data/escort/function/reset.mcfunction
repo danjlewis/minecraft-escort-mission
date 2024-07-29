@@ -9,6 +9,7 @@ scoreboard players reset $mobHealth escort.data
 scoreboard players reset $damageTimer escort.data
 scoreboard players reset $outOfRangeTimer escort.data
 scoreboard players reset $previouslyOutOfRange escort.data
+scoreboard players reset @a escort.dragonsKilled
 
 scoreboard players set $ready escort.data 0
 scoreboard players set $enabled escort.data 0
