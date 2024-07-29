@@ -5,9 +5,3 @@ effect give @e[tag=escort.mob] minecraft:glowing infinite 0 true
 
 execute at @e[tag=escort.mob] run summon minecraft:vex ~ ~-1 ~ {Tags: ["escort.ghost"], Invulnerable: true, NoAI: true, NoGravity: true, PersistenceRequired: true, DeathLootTable: "minecraft:empty"}
 effect give @e[tag=escort.ghost] minecraft:invisibility infinite 0 true
-
-execute store result score $mobHealth escort.data run data get entity @e[tag=escort.mob, limit=1] Health
-
-scoreboard players operation $damageTimer escort.data = $damageInterval escort.settings
-scoreboard players operation $outOfRangeTimer escort.data = $outOfRangeBuffer escort.settings
-scoreboard players set $previouslyOutOfRange escort.data 0
