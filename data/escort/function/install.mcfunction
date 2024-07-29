@@ -4,6 +4,7 @@ scoreboard objectives add escort.data dummy
 scoreboard objectives add escort.settings dummy "Escort Mission Settings"
 scoreboard objectives add escort.dragonsKilled minecraft.killed:minecraft.ender_dragon
 
+scoreboard players set $escortRange escort.settings 16
 scoreboard players set $damageInterval escort.settings 20
 scoreboard players set $outOfRangeBuffer escort.settings 10
 scoreboard players set $mediumHealthThreshold escort.settings 10
