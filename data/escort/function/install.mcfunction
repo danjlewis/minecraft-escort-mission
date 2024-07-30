@@ -3,7 +3,6 @@ execute if function escort:internal/installed run return 1
 scoreboard objectives add escort.data dummy
 scoreboard objectives add escort.settings dummy "Escort Mission Settings"
 scoreboard objectives add escort.dragonsKilled minecraft.killed:minecraft.ender_dragon
-scoreboard objectives add escort.gamemode dummy
 scoreboard objectives add escort.previousGamemode dummy
 
 scoreboard players set $escortRange escort.settings 16

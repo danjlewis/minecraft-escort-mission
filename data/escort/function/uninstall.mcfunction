@@ -9,5 +9,4 @@ team remove escort.critical
 scoreboard objectives remove escort.data
 scoreboard objectives remove escort.settings
 scoreboard objectives remove escort.dragonsKilled
-scoreboard objectives remove escort.gamemode
 scoreboard objectives remove escort.previousGamemode

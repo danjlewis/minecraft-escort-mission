@@ -1,4 +1,7 @@
 execute unless function escort:internal/installed run return 1
+
+execute if score $enabled escort.data matches 0 at @e[tag=escort.mob, predicate=escort:levitating] run particle minecraft:effect ~ ~ ~ 0.5 0.5 0.5 0.5 20
+
 execute unless score $enabled escort.data matches 1 run return 1
 
 execute store result storage escort:settings escortRange int 1.0 run scoreboard players get $escortRange escort.settings
