@@ -5,10 +5,12 @@ execute if score $enabled escort.data matches 1 run function escort:internal/sto
 
 function escort:internal/mob/despawn
 
+execute as @a run function escort:internal/reset_gamemode
+
 scoreboard players reset $mobHealth escort.data
 scoreboard players reset $damageTimer escort.data
 scoreboard players reset $outOfRangeTimer escort.data
-scoreboard players reset $previouslyOutOfRange escort.data
+scoreboard players reset $previousOutOfRange escort.data
 scoreboard players reset @a escort.dragonsKilled
 
 scoreboard players set $ready escort.data 0
