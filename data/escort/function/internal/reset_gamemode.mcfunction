@@ -1,4 +1,4 @@
-execute unless entity @s[gamemode=3] run return 1
+execute unless entity @s[gamemode=spectator] run return 1
 
 execute store result score @s escort.previousGamemode run data get entity @s previousPlayerGameType
 execute if score @s escort.previousGamemode matches 0 run gamemode survival @s
