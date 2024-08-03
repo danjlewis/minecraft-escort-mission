@@ -1,3 +1,5 @@
+execute at @e[tag=escort.ghost] run forceload add ~ ~
+
 function escort:stop
 
 data modify entity @e[tag=escort.mob, limit=1] Silent set value true
@@ -7,6 +9,7 @@ title @a times 10 40 10
 title @a title ["", {"text": "Game over!", "color": "red"}]
 title @a times 10 70 20
 
+execute store result score $previousGamemode escort.data run data get entity @a[limit=1] playerGameType
 gamemode spectator @a
 
 execute at @e[tag=escort.ghost] run summon minecraft:creeper ~ ~1 ~ {Tags: ["escort.dramaticExplosionCreeper"], ExplosionRadius: 24, Fuse: 0s, ignited: true}

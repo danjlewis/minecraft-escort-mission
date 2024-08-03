@@ -1,3 +1,7 @@
+data modify entity @e[tag=escort.mob, limit=1] PortalCooldown set value 300
+data modify entity @e[tag=escort.ghost, limit=1] PortalCooldown set value 300
+execute if score $inPortal.current escort.data matches 1 run return 1
+
 execute at @e[tag=escort.mob] run tp @e[tag=escort.ghost] ~ ~-1 ~
 
 execute store result score $mobHealth escort.data run data get entity @e[tag=escort.mob, limit=1] Health

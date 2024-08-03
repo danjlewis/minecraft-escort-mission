@@ -13,4 +13,3 @@ data remove storage escort:damage_args amount
 scoreboard objectives remove escort.data
 scoreboard objectives remove escort.settings
 scoreboard objectives remove escort.dragonsKilled
-scoreboard objectives remove escort.previousGamemode
