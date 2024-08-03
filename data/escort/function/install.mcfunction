@@ -6,6 +6,7 @@ scoreboard objectives add escort.dragonsKilled minecraft.killed:minecraft.ender_
 scoreboard objectives add escort.previousGamemode dummy
 
 scoreboard players set $escortRange escort.settings 16
+scoreboard players set $mobMaxHealth escort.settings 20
 scoreboard players set $damageInterval escort.settings 20
 scoreboard players set $outOfRangeBuffer escort.settings 10
 scoreboard players set $healthThreshold.medium escort.settings 10

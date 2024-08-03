@@ -6,6 +6,10 @@ team remove escort.medium
 team remove escort.low
 team remove escort.critical
 
+data remove storage escort:settings escortRange
+data remove storage escort:set_max_health_args maxHealth
+data remove storage escort:damage_args amount
+
 scoreboard objectives remove escort.data
 scoreboard objectives remove escort.settings
 scoreboard objectives remove escort.dragonsKilled

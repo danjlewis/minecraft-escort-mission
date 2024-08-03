@@ -6,6 +6,13 @@ execute if score $mobHealth escort.data <= $healthThreshold.medium escort.settin
 execute if score $mobHealth escort.data <= $healthThreshold.low escort.settings run team join escort.lowHealth @e[tag=escort.mob]
 execute if score $mobHealth escort.data <= $healthThreshold.critical escort.settings run team join escort.criticalHealth @e[tag=escort.mob]
 
+execute store result storage escort:set_max_health_args maxHealth int 1.0 run scoreboard players get $mobHealth escort.data
+execute as @a unless score $mobHealth escort.data matches 0 run function escort:internal/set_max_health with storage escort:set_max_health_args
+
+execute store result score $playerHealth.current escort.data run data get entity @a[limit=1] Health
+execute store result score $playerHealth.max escort.data run attribute @a[limit=1] minecraft:generic.max_health base get
+execute if score $playerHealth.current escort.data > $playerHealth.max escort.data run function escort:internal/update_player_health
+
 $execute at @e[tag=escort.mob] if entity @a[distance=..$(escortRange)] run scoreboard players operation $damageTimer escort.data = $damageInterval escort.settings
 $execute at @e[tag=escort.mob] if entity @a[distance=..$(escortRange)] run scoreboard players operation $outOfRangeTimer escort.data = $outOfRangeBuffer escort.settings
 
