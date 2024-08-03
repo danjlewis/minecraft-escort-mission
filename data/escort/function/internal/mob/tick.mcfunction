@@ -1,3 +1,9 @@
+execute if score $playerHealth.current escort.data matches 0 run return 1
+
+execute if score $playerHealth.previous escort.data matches 0 if score $playerHealth.current escort.data matches 1.. run function escort:internal/mob/on_respawn
+
+execute as @a unless function escort:internal/mob/in_same_dimension run return 1
+
 data modify entity @e[tag=escort.mob, limit=1] PortalCooldown set value 300
 data modify entity @e[tag=escort.ghost, limit=1] PortalCooldown set value 300
 execute if score $inPortal.current escort.data matches 1 run return 1
@@ -13,7 +19,6 @@ execute if score $mobHealth escort.data <= $healthThreshold.critical escort.sett
 execute store result storage escort:set_max_health_args maxHealth int 1.0 run scoreboard players get $mobHealth escort.data
 execute as @a unless score $mobHealth escort.data matches 0 run function escort:internal/set_max_health with storage escort:set_max_health_args
 
-execute store result score $playerHealth.current escort.data run data get entity @a[limit=1] Health
 execute store result score $playerHealth.max escort.data run attribute @a[limit=1] minecraft:generic.max_health base get
 execute if score $playerHealth.current escort.data > $playerHealth.max escort.data run function escort:internal/update_player_health
 
@@ -26,6 +31,11 @@ $execute at @e[tag=escort.mob] unless entity @a[distance=..$(escortRange)] unles
 execute if score $outOfRangeTimer escort.data matches 0 if score $previousOutOfRange escort.data matches 0 run function escort:internal/notify
 
 execute if score $damageTimer escort.data matches 0 run function escort:internal/mob/damage
+
+execute at @e[tag=escort.mob] store result score $forceloadCount escort.data run forceload query
+execute at @e[tag=escort.mob] unless score $forceloadCount escort.data matches 2.. run forceload remove all
+execute at @e[tag=escort.mob] run forceload add ~ ~
+scoreboard players reset $forceloadCount escort.data
 
 execute unless score $outOfRangeTimer escort.data matches 0 run scoreboard players set $previousOutOfRange escort.data 0
 execute if score $outOfRangeTimer escort.data matches 0 run scoreboard players set $previousOutOfRange escort.data 1

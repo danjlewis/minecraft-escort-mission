@@ -20,6 +20,7 @@ execute as @a run function escort:internal/reset_gamemode
 tag @e remove escort.portalController
 
 scoreboard players reset $mobHealth escort.data
+scoreboard players reset $playerHealth.previous
 scoreboard players reset $playerHealth.current escort.data
 scoreboard players reset $playerHealth.max escort.data
 scoreboard players reset $damageTimer escort.data

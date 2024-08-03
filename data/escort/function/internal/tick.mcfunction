@@ -4,6 +4,8 @@ execute if score $enabled escort.data matches 0 at @e[tag=escort.mob, predicate=
 
 execute unless score $enabled escort.data matches 1 run return 1
 
+execute store result score $playerHealth.current escort.data run data get entity @a[limit=1] Health
+
 execute store result storage escort:settings escortRange int 1.0 run scoreboard players get $escortRange escort.settings
 execute if entity @e[tag=escort.mob] run function escort:internal/mob/tick with storage escort:settings
 
@@ -13,3 +15,5 @@ scoreboard players operation $inPortal.previous escort.data = $inPortal.current 
 
 execute if score $enabled escort.data matches 1 as @a if score @s escort.dragonsKilled matches 1.. run function escort:internal/win
 execute as @a if score $enabled escort.data matches 1 unless entity @e[tag=escort.mob] if entity @e[tag=escort.ghost] unless score $inPortal.current escort.data matches 1 if function escort:internal/mob/in_same_dimension run function escort:internal/lose
+
+scoreboard players operation $playerHealth.previous escort.data = $playerHealth.current escort.data
