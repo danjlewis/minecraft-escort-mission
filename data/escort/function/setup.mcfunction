@@ -5,7 +5,6 @@ execute if score $enabled escort.data matches 1 run return 1
 function escort:internal/mob/spawn
 
 execute store result storage escort:set_max_health_args maxHealth int 1.0 run scoreboard players get $mobMaxHealth escort.settings
-execute as @e[tag=escort.mob] run function escort:internal/set_max_health with storage escort:set_max_health_args
 execute as @a run function escort:internal/set_max_health with storage escort:set_max_health_args
 
 execute store result score $playerHealth.current escort.data run data get entity @a[limit=1] Health
