@@ -7,6 +7,7 @@ team remove escort.low
 team remove escort.critical
 
 data remove storage escort:settings escortRange
+data remove storage escort:settings mobFuse
 data remove storage escort:set_max_health_args maxHealth
 data remove storage escort:damage_args amount
 

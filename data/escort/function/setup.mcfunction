@@ -2,7 +2,8 @@ execute unless function escort:internal/installed run return 1
 execute if score $ready escort.data matches 1 run return 1
 execute if score $enabled escort.data matches 1 run return 1
 
-function escort:internal/mob/spawn
+execute store result storage escort:settings mobFuse int 1.0 run scoreboard players get $mobFuse escort.settings
+function escort:internal/mob/spawn with storage escort:settings
 
 execute store result storage escort:set_max_health_args maxHealth int 1.0 run scoreboard players get $mobMaxHealth escort.settings
 execute as @a run function escort:internal/set_max_health with storage escort:set_max_health_args

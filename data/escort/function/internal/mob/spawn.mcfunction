@@ -1,6 +1,6 @@
 execute if entity @e[tag=escort.mob] run return 1
 
-summon minecraft:creeper ~ ~ ~ {Tags: ["escort.entity", "escort.mob"], Invulnerable: true, NoAI: true, PersistenceRequired: true, DeathLootTable: "minecraft:empty", ExplosionRadius: 24}
+$summon minecraft:creeper ~ ~ ~ {Tags: ["escort.entity", "escort.mob"], Invulnerable: true, NoAI: true, PersistenceRequired: true, DeathLootTable: "minecraft:empty", Fuse: $(mobFuse)s, ExplosionRadius: 24}
 effect give @e[tag=escort.mob] minecraft:glowing infinite 0 true
 
 execute store result storage escort:set_max_health_args maxHealth int 1.0 run scoreboard players get $mobMaxHealth escort.settings
